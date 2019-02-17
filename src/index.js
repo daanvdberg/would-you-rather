@@ -21,7 +21,7 @@ WebFont.load({
 });
 
 const persistedState = loadState();
-const store = configureStore();
+const store = configureStore(persistedState);
 store.subscribe(throttle(() => {
 	saveState({
 		questions: store.getState().questions,
