@@ -1,0 +1,169 @@
+
+.question {
+	.header {
+		font-size: 1.4rem;
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.options {
+		display: flex;
+		position: relative;
+
+		flex-direction: row;
+		flex-wrap: nowrap;
+
+		padding: 4px;
+
+		.option {
+			display: flex;
+			position: relative;
+			z-index: 100;
+
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: center;
+
+			width: 50%;
+			padding: 10% 5%;
+
+			transition: all 300ms ease-in-out;
+
+			border: 4px solid white;
+
+			text-align: center;
+
+			.percentage {
+				font-size: 4rem;
+				font-weight: 700;
+			}
+
+			.count {
+				color: hsl(0, 0, 50%);
+				font-size: 1.1rem;
+				font-weight: 300;
+			}
+
+			.choice {
+				font-size: 1.5rem;
+				font-weight: 400;
+
+				&:first-letter {
+					text-transform: uppercase;
+				}
+			}
+
+			&--one {
+				background: $color-option-one;
+
+				&::before {
+					background: radial-gradient(circle at bottom center, lighten($color-option-one, 10%) 15px, $color-option-one);
+				}
+
+				&:hover::before {
+					opacity: 1;
+				}
+			}
+
+			&--two {
+				background: $color-option-two;
+
+				&::before {
+					background: radial-gradient(circle at bottom center, lighten($color-option-two, 10%) 15px, $color-option-two);
+				}
+
+				&:hover::before {
+					opacity: 1;
+				}
+			}
+
+			&--selected {
+				box-shadow: inset 0 0 0 6px $global-primary-background;
+
+				&::before {
+					box-shadow: inset 0 0 0 6px $global-primary-background;
+				}
+
+				&::after {
+					content: '✓ You have chosen this answer';
+
+					position: absolute;
+					top: 0;
+					left: 0;
+
+					height: 3rem;
+					padding: 0 1rem;
+
+					background: $global-primary-background;
+
+					color: white;
+					font-size: 1.2rem;
+					font-weight: 200;
+					line-height: 3rem;
+					text-align: center;
+				}
+			}
+
+			&::before {
+				content: '';
+
+				display: block;
+				position: absolute;
+				z-index: -100;
+				top: 0;
+				left: 0;
+
+				width: 100%;
+				height: 100%;
+
+				transition: opacity 0.45s;
+
+				border-radius: inherit;
+
+				opacity: 0;
+			}
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.divider {
+		display: flex;
+		position: absolute;
+		z-index: 101;
+		top: 50%;
+		left: 50%;
+
+		align-items: center;
+		justify-content: center;
+
+		width: 3.6rem;
+		height: 3.6rem;
+
+		transform: translate(-50%, -50%);
+
+		border: 8px solid white;
+		border-radius: 50%;
+
+		background: dimgrey;
+
+		color: white;
+		font-size: 1.4rem;
+		text-transform: uppercase;
+
+		user-select: none;
+	}
+}
+
+.question-details {
+	padding: 40px;
+
+	text-align: center;
+
+	span {
+		font-style: italic;
+	}
+}

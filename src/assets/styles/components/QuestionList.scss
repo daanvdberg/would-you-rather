@@ -1,0 +1,44 @@
+
+.question-list {
+	.uk-tab {
+		.uk-button {
+			padding: 5px 10px;
+
+			color: $text-primary-color;
+			text-decoration: none;
+		}
+
+		.uk-active .uk-button {
+			color: $global-link-color;
+		}
+	}
+
+	&__item {
+		.uk-card-title {
+			font-size: 1.2rem;
+		}
+
+		.uk-card-body {
+			background: lighten($global-secondary-background, 5%);
+
+			color: white;
+			font-size: 1.3rem;
+			font-weight: 500;
+
+			p::first-letter {
+				text-transform: uppercase;
+			}
+		}
+
+		.uk-card-footer {
+			display: flex;
+
+			justify-content: space-between;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+	}
+}
