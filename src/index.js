@@ -10,6 +10,8 @@ import configureStore from './store';
 import { loadState, saveState } from './utils/localStorage';
 
 import App from './App';
+import './theme.scss';
+
 UIkit.use(Icons);
 
 WebFont.load({

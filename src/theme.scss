@@ -1,0 +1,23 @@
+// 1. Your custom variables and variable overwrites.
+@import './assets/styles/variables';
+
+// 2. Import default variables and available mixins.
+@import '~uikit/src/scss/variables-theme';
+@import '~uikit/src/scss/mixins-theme';
+
+// 3. Your custom mixin overwrites.
+// Nothing so far
+
+// 4. Import UIkit.
+@import '~uikit/src/scss/uikit-theme';
+
+// 5. Custom project styling
+@import './assets/styles/base';
+
+// 5.1 Custom page styling
+@import './assets/styles/pages/authentication';
+@import './assets/styles/pages/leaderboard';
+
+// 5.2 Custom component styling
+@import './assets/styles/components/QuestionList';
+@import './assets/styles/components/Question';

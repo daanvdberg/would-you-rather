@@ -1,0 +1,39 @@
+
+html {
+	min-height: 100%;
+}
+
+body {
+	display: flex;
+
+	min-height: 100%;
+
+	/* stylelint-disable */
+	 > #root {
+		/* stylelint-enable */
+		flex-grow: 1;
+	}
+}
+
+.uk-logo {
+	font-weight: 700;
+}
+
+.footer {
+	margin-top: 60px;
+	padding: 10px 0 40px;
+
+	border-top: 1px solid $global-border;
+
+	text-align: center;
+
+	span {
+		border-bottom: 1px dotted $global-color;
+
+		font-style: italic;
+	}
+}
+
+.notification-bar {
+	z-index: 999;
+}
