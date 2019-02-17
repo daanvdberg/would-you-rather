@@ -8,6 +8,8 @@ Author: Daan van den Berg
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Avatars are courtesy of **Adorable Avatars** (http://avatars.adorable.io/)
+
 ***
 
 #### Steps to review project
