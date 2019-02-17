@@ -1,0 +1,75 @@
+
+.authentication {
+	& > .uk-container {
+		display: flex;
+
+		justify-content: center;
+	}
+}
+
+.auth-form {
+	.uk-dropdown {
+		li {
+			&.uk-active {
+				opacity: 0.6;
+				background: hsl(0, 0, 94%);
+
+				pointer-events: none;
+			}
+
+			& + li {
+				margin-top: 8px;
+			}
+		}
+
+		.uk-button {
+			display: block;
+
+			width: 100%;
+			padding: 5px;
+
+			color: dimgrey;
+			text-align: left;
+			text-decoration: none;
+
+			&:hover {
+				color: $global-link-color;
+			}
+		}
+
+		img {
+			width: 40px;
+			margin-right: 10px;
+
+			border-radius: 50%;
+		}
+
+		.uk-icon {
+			margin: 5px;
+			padding: 3px;
+			float: right;
+
+			border: 1px solid dimgrey;
+			border-radius: 50%;
+
+			color: dimgrey;
+		}
+	}
+
+	.dropdown {
+		display: flex;
+
+		align-items: center;
+		justify-content: space-between;
+
+		img {
+			position: relative;
+			top: -1px;
+
+			width: 24px;
+			margin-right: 5px;
+
+			border-radius: 50%;
+		}
+	}
+}
