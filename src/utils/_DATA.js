@@ -1,3 +1,5 @@
+import { loadState } from './localStorage';
+
 let users = {
 	sarahedo: {
 		id: 'sarahedo',
@@ -172,6 +174,9 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+	const state = loadState();
+	let { users, questions } = state;
+	const alternateAnswer = answer === 'optionOne' ? 'optionTwo' : 'optionOne';
 	return new Promise( (res, rej) => {
 		setTimeout( () => {
 			users = {
@@ -189,6 +194,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 				...questions,
 				[qid]: {
 					...questions[qid],
+					[alternateAnswer]: {
+						...questions[qid][alternateAnswer],
+						votes: questions[qid][alternateAnswer].votes.filter((i) => i !== authedUser )
+					},
 					[answer]: {
 						...questions[qid][answer],
 						votes: questions[qid][answer].votes.concat( [authedUser] )
@@ -196,7 +205,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 				}
 			};
 
-			res();
+			res({ users, questions });
 		}, 500 );
 	} );
 }
