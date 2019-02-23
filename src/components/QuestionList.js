@@ -21,10 +21,6 @@ class QuestionList extends Component {
 		}));
 	};
 
-	viewQuestion = (id) => () => {
-		this.props.history.push(`/question/${id}`);
-	};
-
 	render() {
 		const { questions, users, authedUser } = this.props;
 		const { activeTab } = this.state;
@@ -62,7 +58,6 @@ class QuestionList extends Component {
 										key={question.id}
 										question={question}
 										author={author}
-										onClick={this.viewQuestion(question.id)}
 									/>
 								)
 							})
@@ -83,7 +78,6 @@ class QuestionList extends Component {
 										key={question.id}
 										question={question}
 										author={author}
-										onClick={this.viewQuestion(question.id)}
 									/>
 								)
 							})

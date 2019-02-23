@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import isUndefined from 'lodash/isUndefined';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import selectQuestions from '../selectors/questions';
@@ -7,6 +8,9 @@ import selectUsers from '../selectors/users';
 class LeaderBoard extends Component {
 
 	sortArray = (array) => array.sort( (a, b) => {
+		if (isUndefined(a) || isUndefined(b)) {
+			return false;
+		}
 		const lengthA = Object.keys( a.answers ).length + a.questions.length;
 		const lengthB = Object.keys( b.answers ).length + b.questions.length;
 		return (lengthA < lengthB) ? 1 : ((lengthB < lengthA) ? -1 : 0);

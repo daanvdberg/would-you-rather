@@ -37,9 +37,9 @@ class App extends Component {
 					<Switch>
 						<Route exact path='/' component={ Home } />
 						<Route path='/login' component={ Authentication } />
-						<Route path='/question/:id' component={ Question } />
+						<PrivateRoute path='/questions/:id' component={ Question } />
 						<PrivateRoute path='/leader-board' component={ LeaderBoard } />
-						<PrivateRoute path='/new-question' component={ NewQuestion } />
+						<PrivateRoute path='/add' component={ NewQuestion } />
 						<Route component={ NoMatch } />
 					</Switch>
 

@@ -22,8 +22,8 @@ class Navigation extends Component {
 							<li className={location.pathname === '/' ? 'uk-active' : undefined}>
 								<Link to='/'>Home</Link>
 							</li>
-							<li className={location.pathname === '/new-question' ? 'uk-active' : undefined}>
-								<Link to='/new-question'>Submit Question</Link>
+							<li className={location.pathname === '/add' ? 'uk-active' : undefined}>
+								<Link to='/add'>Submit Question</Link>
 							</li>
 							<li className={location.pathname === '/leader-board' ? 'uk-active' : undefined}>
 								<Link to='/leader-board'>Leader Board</Link>

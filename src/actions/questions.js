@@ -13,10 +13,11 @@ export function receiveQuestions (questions) {
 	};
 }
 
-export function addQuestion (question) {
+export function addQuestion (question, authedUser) {
 	return {
 		type: ADD_QUESTION,
-		question
+		question,
+		authedUser
 	}
 }
 
@@ -30,7 +31,7 @@ export function handleAddQuestion ({optionOne, optionTwo}, complete) {
 			optionTwoText: optionTwo,
 			author: authedUser
 		})
-			.then((question) => dispatch(addQuestion(question)))
+			.then((question) => dispatch(addQuestion(question, authedUser)))
 			.then(() => {
 				dispatch(hideLoading());
 				if (complete) {

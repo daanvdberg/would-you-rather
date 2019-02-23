@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import { formatDate } from '../utils/helpers';
@@ -54,7 +54,7 @@ class Question extends Component {
 
 	viewQuestion = (id) => () => {
 		window.scrollTo(0, 0);
-		this.props.history.push(`/question/${id}`);
+		this.props.history.push(`/questions/${id}`);
 	};
 
 	render () {
@@ -74,6 +74,7 @@ class Question extends Component {
 
 		const optionOneChosen = question.optionOne.votes.includes(authedUser);
 		const optionTwoChosen = question.optionTwo.votes.includes(authedUser);
+		const alreadyVoted = optionOneChosen || optionTwoChosen;
 
 		return (
 			<div className="uk-container uk-container-large uk-margin-large-top">
@@ -95,8 +96,16 @@ class Question extends Component {
 							className={`option option--one${optionOneChosen ? ' option--selected' : ''}`}
 							onClick={this.chooseAnswer('optionOne')}
 						>
-							<span className='percentage'>{(totalVotes === 0 ? totalVotes : optionOneVotes / totalVotes * 100).toFixed(2)}%</span>
-							<span className='count'>{optionOneVotes === 1 ? '1 person' : `${optionOneVotes} people`} chose this option</span>
+							{ alreadyVoted &&
+								<Fragment>
+									<span className='percentage'>
+										{(totalVotes === 0 ? totalVotes : optionOneVotes / totalVotes * 100).toFixed(2)}%
+									</span>
+									<span className='count'>
+										{optionOneVotes === 1 ? '1 person' : `${optionOneVotes} people`} chose this option
+									</span>
+								</Fragment>
+							}
 							<span className='choice'>{question.optionOne.text}</span>
 						</div>
 						<div className='divider'>or</div>
@@ -104,8 +113,16 @@ class Question extends Component {
 							className={`option option--two${optionTwoChosen ? ' option--selected' : ''}`}
 							onClick={this.chooseAnswer('optionTwo')}
 						>
-							<span className='percentage'>{(totalVotes === 0 ? totalVotes : optionTwoVotes / totalVotes * 100).toFixed(2)}%</span>
-							<span className='count'>{optionTwoVotes === 1 ? '1 person' : `${optionTwoVotes} people`} chose this option</span>
+							{ alreadyVoted &&
+								<Fragment>
+									<span className='percentage'>
+										{ (totalVotes === 0 ? totalVotes : optionTwoVotes / totalVotes * 100).toFixed( 2 ) }%
+									</span>
+									<span className='count'>
+										{ optionTwoVotes === 1 ? '1 person' : `${ optionTwoVotes } people` } chose this option
+									</span>
+								</Fragment>
+							}
 							<span className='choice'>{question.optionTwo.text}</span>
 						</div>
 					</div>

@@ -28,7 +28,7 @@ class NewQuestion extends Component {
 			this.showNotification();
 		} else {
 			dispatch(handleAddQuestion(
-				{optionOne, optionTwo},
+				{ optionOne, optionTwo },
 				() => {
 					this.setState( { optionOne: '', optionTwo: '' });
 					this.props.history.push('/')

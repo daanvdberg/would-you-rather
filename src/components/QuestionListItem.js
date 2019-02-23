@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatDate } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
-const QuestionListItem = ({ question, author, onClick }) => {
+const QuestionListItem = ({ question, author }) => {
 	const voteCount = question.optionOne.votes.length + question.optionTwo.votes.length;
 	return (
 		<div className='question-list__item'>
@@ -29,7 +30,7 @@ const QuestionListItem = ({ question, author, onClick }) => {
 					<p>{question.optionOne.text} ... or ...</p>
 				</div>
 				<div className="uk-card-footer">
-					<span className="uk-button uk-button-text" onClick={onClick}>View Question</span>
+					<Link className="uk-button uk-button-text" to={`questions/${question.id}`}>View Question</Link>
 					<span className="uk-label">Answered {voteCount === 1 ? ' Once' : `${voteCount} Times`}</span>
 				</div>
 			</div>
@@ -39,8 +40,7 @@ const QuestionListItem = ({ question, author, onClick }) => {
 
 QuestionListItem.propTypes = {
 	question: PropTypes.object.isRequired,
-	author: PropTypes.object.isRequired,
-	onClick: PropTypes.func
+	author: PropTypes.object.isRequired
 };
 
 export default QuestionListItem;
